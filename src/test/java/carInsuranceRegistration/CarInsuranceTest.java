@@ -4,6 +4,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.time.Duration;
+import java.util.List;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -26,7 +27,7 @@ import org.testng.annotations.Test;
 public class CarInsuranceTest {
 
 	WebDriver driver;
-	String url = "https://sampleapp.tricentis.com/101/app.php";
+	String url = "https://sampleapp.tricentis.com/101";
 	static String testDataPath = "src/test/resources/testdata/InsuranceFormData.xlsx";
 	static XSSFWorkbook wrkbk;
 	static XSSFSheet sheet;
@@ -84,22 +85,46 @@ public class CarInsuranceTest {
 		driver.get(url);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.findElement(By.xpath("//a[text()='Get a quote']")).click();
+		String typeInsurance = driver.findElement(By.id("selectedinsurance")).getText();
 		Select make = new Select(driver.findElement(By.id("make")));
 		make.selectByValue(values[0]);
+		if(typeInsurance.equalsIgnoreCase("Motorcycle Insurance"))
+		{
 		Select model = new Select(driver.findElement(By.id("model")));
 		model.selectByValue(values[1]);
 		driver.findElement(By.id("cylindercapacity")).sendKeys(values[2]);
+		}
 		driver.findElement(By.id("engineperformance")).sendKeys(values[3]);
 		driver.findElement(By.id("dateofmanufacture")).sendKeys(values[4].substring(1));
-		Select numberOfSeats = new Select(driver.findElement(By.id("numberofseats")));
+		List<WebElement> numberofSeat = driver.findElements(By.id("numberofseats"));
+		if(!numberofSeat.isEmpty())
+		{
+		Select numberOfSeats = new Select(numberofSeat.get(0));
 		numberOfSeats.selectByValue(values[5]);
-		driver.findElement(By.xpath("//span[preceding-sibling::input[@id='righthanddrive"+values[6].toLowerCase()+"']]")).click();
-		Select numberofseatsmotorcycle = new Select(driver.findElement(By.id("numberofseatsmotorcycle")));
+		}
+		List<WebElement> righthand = driver.findElements(By.xpath("//span[preceding-sibling::input[@id='righthanddrive"+values[6].toLowerCase()+"']]"));
+		if(!righthand.isEmpty())
+		{
+			righthand.get(0).click();
+		}
+		List<WebElement> motorSeat = driver.findElements(By.id("numberofseatsmotorcycle"));
+		if(!motorSeat.isEmpty()) {
+		Select numberofseatsmotorcycle = new Select(motorSeat.get(0));
 		numberofseatsmotorcycle.selectByValue(values[7]);
-		Select fuelType = new Select(driver.findElement(By.id("fuel")));
+		}
+		List<WebElement> fuelTypes = driver.findElements(By.id("fuel"));
+		if(!fuelTypes.isEmpty())
+		{
+		Select fuelType = new Select(fuelTypes.get(0));
 		fuelType.selectByValue(values[8]);
-		driver.findElement(By.id("payload")).sendKeys(values[9]);
-		driver.findElement(By.id("totalweight")).sendKeys(values[10]);
+		}
+		List<WebElement> payload = driver.findElements(By.id("payload"));
+		if(!payload.isEmpty())
+			payload.get(0).sendKeys(values[9]);
+		List<WebElement> totalWeight = driver.findElements(By.id("totalweight"));
+		if(!totalWeight.isEmpty())
+			totalWeight.get(0).sendKeys(values[10]);
 		driver.findElement(By.id("listprice")).sendKeys(values[11]);
 		driver.findElement(By.id("licenseplatenumber")).sendKeys(values[12]);
 		driver.findElement(By.id("annualmileage")).sendKeys(values[13]);
@@ -141,8 +166,12 @@ public class CarInsuranceTest {
 		driver.findElement(By.id("startdate")).sendKeys(values[26].substring(1));
 		Select insuranceSum = new Select(driver.findElement(By.id("insurancesum")));
 		insuranceSum.selectByValue(values[27]);
-		Select meritRating = new Select(driver.findElement(By.id("meritrating")));
+		List<WebElement> rating = driver.findElements(By.id("meritrating"));
+		if(!rating.isEmpty())
+		{
+		Select meritRating = new Select(rating.get(0));
 		meritRating.selectByValue(values[28]);
+		}
 		Select damageInsurance = new Select(driver.findElement(By.id("damageinsurance")));
 		damageInsurance.selectByValue(values[29]);
 		String argu[] = values[30].split(",");
@@ -150,8 +179,12 @@ public class CarInsuranceTest {
 		{
 			driver.findElement(By.xpath("//span[preceding-sibling::input[@id='" + argu[i].trim().replace(" ", "")+"']]")).click();
 		}
-		Select courtesyCar = new Select(driver.findElement(By.id("courtesycar")));
+		List<WebElement> courtesCar = driver.findElements(By.id("courtesycar"));
+		if(!courtesCar.isEmpty())
+		{
+		Select courtesyCar = new Select(courtesCar.get(0));
 		courtesyCar.selectByValue(values[31]);
+		}
 		driver.findElement(By.id("nextselectpriceoption")).click();
 		// Price Details Page 
 		driver.findElement(By.xpath("//span[preceding-sibling::input[@id='select" + values[32].toLowerCase() + "']]")).click();

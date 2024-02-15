@@ -2,27 +2,27 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-02-11T21:33:43 IST" name="Default suite" finished-at="2024-02-11T21:34:10 IST" duration-ms="27113">
+  <suite started-at="2024-02-15T19:20:00 IST" name="Default suite" finished-at="2024-02-15T19:20:27 IST" duration-ms="26914">
     <groups>
     </groups>
-    <test started-at="2024-02-11T21:33:43 IST" name="Default test" finished-at="2024-02-11T21:34:10 IST" duration-ms="27113">
+    <test started-at="2024-02-15T19:20:00 IST" name="Default test" finished-at="2024-02-15T19:20:27 IST" duration-ms="26914">
       <class name="carInsuranceRegistration.CarInsuranceTest">
-        <test-method is-config="true" signature="setupBrowser()[pri:0, instance:carInsuranceRegistration.CarInsuranceTest@671a5887]" started-at="2024-02-11T21:33:43 IST" name="setupBrowser" finished-at="2024-02-11T21:33:45 IST" duration-ms="1349" status="PASS">
+        <test-method is-config="true" signature="setupBrowser()[pri:0, instance:carInsuranceRegistration.CarInsuranceTest@671a5887]" started-at="2024-02-15T19:20:00 IST" name="setupBrowser" finished-at="2024-02-15T19:20:01 IST" duration-ms="1293" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBrowser -->
-        <test-method signature="insuranceRegistration([Ljava.lang.String;)[pri:0, instance:carInsuranceRegistration.CarInsuranceTest@671a5887]" started-at="2024-02-11T21:33:45 IST" name="insuranceRegistration" data-provider="FormData" finished-at="2024-02-11T21:34:10 IST" duration-ms="25195" status="PASS">
+        <test-method signature="insuranceRegistration([Ljava.lang.String;)[pri:0, instance:carInsuranceRegistration.CarInsuranceTest@671a5887]" started-at="2024-02-15T19:20:02 IST" name="insuranceRegistration" data-provider="FormData" finished-at="2024-02-15T19:20:27 IST" duration-ms="24942" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[Ljava.lang.String;@5484117b]]>
+                <![CDATA[[Ljava.lang.String;@3dffc764]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- insuranceRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:carInsuranceRegistration.CarInsuranceTest@671a5887]" started-at="2024-02-11T21:34:10 IST" name="tearDown" finished-at="2024-02-11T21:34:10 IST" duration-ms="134" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:carInsuranceRegistration.CarInsuranceTest@671a5887]" started-at="2024-02-15T19:20:27 IST" name="tearDown" finished-at="2024-02-15T19:20:27 IST" duration-ms="177" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
